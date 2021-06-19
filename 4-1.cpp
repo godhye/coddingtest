@@ -30,21 +30,29 @@ int main()
 	{
 		char plan;
 		plan = direction[i];
-
+		int xmove;
+		int ymove;
 		for (int k = 0; k < 4; k++)
 		{
 			if (plan == movetype[k])
 			{
-				if(x + dx[k] > 1)
-				x = x + dx[k];
+				//if(x + dx[k] > 1)
+					xmove = x + dx[k];
 
-				if(y + dy[k] > 1)
-				y = y + dy[k];
+				//if(y + dy[k] > 1)
+					ymove = y + dy[k];
 
-				
-				break;
 			}
+		
+			//xmove, ymove 사이즈 벗어나는 경우도 체크해야함 
+			if (xmove < 1 || ymove < 1 || xmove > size || ymove >size)
+				continue;
+
+			x = xmove;
+			y = ymove;
+
 		}
+
 
 
 	}

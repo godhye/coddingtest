@@ -6,22 +6,21 @@
 //왕실의나이트
 using namespace std;
 
+
 int main()
 {
 	int result = 0;
-	char pointx;
-	int pointy;
+ 
 	int cur_x;
 	int cur_y;
-	char x[8] = { 'a','b','c','d','e','f','g' };
-	scanf("%c%d", &pointx, &pointy);
+	 
+	string point;
+	getline(cin, point);
 
-	for (int i = 0; i < 8; i++)
-	{
-		if (x[i] == pointx)
-			cur_x = i +1 ;
-	}
-	cur_y = pointy;
+	//ord(char) 하는 방법 
+	cur_x = point[0] - 'a' +1;
+	cur_y = point[1] - '0';
+
 
 	int xmove[8] = { 2 ,2 ,-2,-2,1,-1,1,-1 };
 	int ymove[8] = { 1,-1,1,-1,2,2,-2,2 };

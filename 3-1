@@ -1,4 +1,4 @@
-//거스름돈
+//거스름돈 ntotal은 10의배수 
 #include <stdio.h>
 
 int main()

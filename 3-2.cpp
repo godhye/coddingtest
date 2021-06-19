@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-//큰수의법칙 
+//큰수의법칙 동빈맘
 using namespace std;
 
 int main()

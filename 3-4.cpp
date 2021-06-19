@@ -9,27 +9,30 @@ int main()
 {
 	  
 	int N;
-	int M;
+	int K;
 	int result = 0;
-	cin >> N >> M;
-	 
-	for (int i = 0; i < 100000; i++)
+	cin >> N >> K;
+	int target;
+
+	while (true)
 	{
+		// 나누기전ㅇㅔ 1빼기 수행
+		target = (N / K) * K;
+		result += (N - target);
+		N = target;
+		printf("A target %d result %d N %d K %d \n", target, result, N , K);
+
+		//K로 나누기
+		result += 1;
+		N = N / K;
+
+		printf("B target %d result %d N %d K %d \n", target, result, N, K);
 		if (N == 1)
 			break;
 
-		if (N%M != 0)
-		{
-			N = N - 1;
-		}
-		else
-		{
-			N = N / M;
-
-		}
-		result++;
 	}
-
+	 
+	printf("%d ", result);
 	cout << result;
 	return 0;
 }

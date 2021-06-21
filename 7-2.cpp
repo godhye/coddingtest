@@ -20,9 +20,9 @@ bool binarysearch(vector<int> list, int start, int end)
 		return cnt;
 
 	else if (list[middle] > K)
-		binarysearch(list, start, middle - 1);
+		return binarysearch(list, start, middle - 1);
 	else
-		binarysearch(list,  middle+1 , end);
+		return binarysearch(list,  middle+1 , end);
 }
 
 

@@ -27,35 +27,40 @@ int main()
 	//정렬
 	sort(length.begin(), length.end());
 
-	
-	int remain = 0;
-	int k = 0;
-	int n = length[N - 1];
-	while (1)
+	int heigh;
+	int start = 0;
+	int end = length[length.size() - 1];
+	int middle = 0;
+	int target = 0;
+	int result;
+	while (start <= end)
 	{
 		
-		remain = 0;
-		for (int i =N-1; i >= 0; i--)
-		{
-			int remain2 =  length[i] - n;
-			
-			if (remain2 < 0)
-				continue;
-			else
-				remain += remain2;
+		middle = (start + end) / 2;
 
+		for (int i = 0; i < N; i++)
+		{
+			int remain = length[i] - middle;
+			if (remain > 0)
+				target += remain;
+			
 		}
 
-		if (remain == K)
+		if (target == K)
 			break;
-
-		n--;
-		k++;
+		else if (target > K)
+			start = middle - 1;
+			
+		else
+		{
+			result = middle;
+			end = middle + 1;
+		}
+		target = 0;
 
 	}
-
-	cout << n;
 	 
+	cout << middle;
 	return 1;
 
 }

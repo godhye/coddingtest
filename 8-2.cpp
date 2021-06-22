@@ -10,7 +10,7 @@
 using namespace std;
  
  
-int cntarray[30001] = { 0, };
+int resultarray[30001] = { 0, };
 vector<int> vsize;
 
 int main()
@@ -27,44 +27,15 @@ int main()
 		vsize.push_back(size);
 	}
 	 
-	while (1)
+	resultarray[0] = vsize[0];
+	resultarray[1] = max(vsize[1], vsize[0]);
+
+	for (int i = 2; i < n; i++)
 	{
-		int max = 0;
-		int maxindex = -1;
-
-		if (vsize.size()<= 1)
-			break;
-
-
-		for (int i = 0; i < vsize.size(); i++)
-		{
-			if (max < vsize[i])
-			{
-				max = vsize[i];
-				maxindex = i;
-			}
-
-		}
-		 
-
-		result += vsize[maxindex];
-		cout << maxindex << vsize[maxindex] << endl;
-
-	
- 
-		
-		if (maxindex + 1 < vsize.size() && vsize.size() != 1)
-		{
-			vsize.erase(vsize.begin() + maxindex+1);
-		}
-		// 양옆 , 해당 칸 0으로
-		vsize.erase(vsize.begin() + maxindex);
-		if (maxindex - 1 >= 0 && vsize.size() != 1)
-		{
-			vsize.erase(vsize.begin() + maxindex - 1);
-		}
+		resultarray[i] = max(resultarray[i - 1], resultarray[i - 2] + vsize[i]);
 	}
-	cout << result;
+
+	cout << resultarray[n - 1];
 
 	return 1;
 }

@@ -6,7 +6,24 @@
 #include <queue>
 #include <stack>
 
+ /*
+ 6 11
+ 1
+ 1 2 2
+ 1 3 5
+ 1 4 1
+ 2 3 3
+ 2 4 2
+ 3 2 3
+ 3 6 5
+ 4 3 3
+ 4 5 1
+ 5 3 1
+ 5 6 2
+
  
+ */
+#define INF 1E9
 using namespace std;
  
 //방문여부
@@ -16,7 +33,7 @@ bool visited[100001] = { false, };
 vector<pair<int, int>> graph[100001];
 
 //최단거리테이블
-int d[100001] = { 9999999, };
+int d[100001];
 
 
 int main()
@@ -31,6 +48,8 @@ int main()
 	
 	cin.ignore();
 
+	fill(d, d + 100001, INF);
+
 	for (int i = 0; i < nedge; i++)
 	{
 		int start, end, value;
@@ -42,19 +61,19 @@ int main()
 	//시작점 표시 
 	d[startnode] = 0;
 
-	int minnode;
+	int minnode =-1;
 
 
 	//시작노드 거쳐 연결된 노드로 가는 비용 
 	for (int i = 0; i < graph[startnode].size(); i++)
 	{
-		auto v = graph[startnode].front();
+		auto v = graph[startnode][i];
 		d[v.first] = v.second; 
 
 	}
 	visited[startnode] = true; //방문표시 
 
-
+	
 	for (int i = 0; i < nnode - 1; i++)
 	{	
 		int minvalue = 9999999;
@@ -64,7 +83,7 @@ int main()
 		{
 			if (!visited[i])
 			{
-				if (minvalue < d[i])
+				if (minvalue > d[i])
 				{
 					minvalue = d[i];
 					minnode = i;

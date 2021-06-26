@@ -28,7 +28,7 @@ int main()
 	int nnode, edge;
 	queue< int> q;
 	int indegree[1001] = { 0, };
-	int visited[1001] = { 0, };
+ 
 	int totalvalue = 0;
 	cin >> nnode >> edge;
 
@@ -44,19 +44,19 @@ int main()
 		indegree[end] ++;
 	}
 
-	while (1) 
-	{
-		for (int i = 1; i <= nnode; i++)
-		{
-			if (indegree[i] == 0 && visited[i] == 0)
-			{
-				q.push(i);
-				visited[i] = 1;
-			}
-		}
 
-		if (q.empty())
-			break;
+	for (int i = 1; i <= nnode; i++)
+	{
+		if (indegree[i] == 0)
+		{
+			q.push(i);
+
+		}
+	}
+
+	while (!q.empty())
+	{
+		 
 		//큐에서 진입차수 0인 노드 꺼냄
 
 		auto a = q.front();
@@ -66,8 +66,9 @@ int main()
 		for (int i = 0; i < v[a].size(); i++)
 		{
 			indegree[v[a][i]] --;
-
-			v[a].erase(v[a].begin(), v[a].begin() + i);
+			if (indegree[v[a][i]] == 0)
+				q.push(v[a][i]);
+			//v[a].erase(v[a].begin(), v[a].begin() + i);
 		}
 		//방문표시
 		

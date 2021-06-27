@@ -48,18 +48,18 @@ int main()
 
 	for (int i = 0; i < n; i++)
 	{
-		int nmin = 10000;
-		for (int j = i; j < n; j++)
+		int index = i;
+		for (int j = i+1; j < n; j++)
 		{
 			
-				if (nmin > narray[j])
+				if (narray[index] > narray[j])
 				{
-					nindex = j;
-					nmin = narray[j];
+					index = j;
+					
 				}
 		}
  
-		swap(narray, i, nindex);
+		swap(narray, i, index);
 	}
 
 	for (int i = 0 ;i < narray.size(); i++)

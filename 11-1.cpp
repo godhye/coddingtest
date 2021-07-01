@@ -10,7 +10,7 @@ using namespace std;
 /*
  
  5
- 2 4 3 1 2
+ 2 4 3 3 3
 */
  
  
@@ -29,23 +29,22 @@ int main()
 		v.push_back(k);
 	}
 
-	sort(v.begin(), v.begin() + v.size());
-
+	sort(v.begin(), v.end());
+	int count = 0;
 	for (int i = 0; i < v.size(); i++)
 	{
+		
 		int k = v[i];
 
-		for (int j = i; j < k; j++)
+		count++;
+		if (count >= k)
 		{
-			if (k < v[j])
-				break;
-			
-			if (k == v[j])
-				result++;
+			result++;
+			count = 0;
 		}
 
-		if (k != 1)
-			i += k;
+
+		 
 		
 	}
 	cout << result;

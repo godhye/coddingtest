@@ -20,7 +20,7 @@ int main() {
 	cin >> n >> m; //n의 숫자수 , m은 최대무게 
 	vector<int> v;
 	int result = 0;
-
+	int weigharray[10] = { 0 ,};
 	for (int i = 0; i < n; i++)
 	{
 		int inum;
@@ -28,13 +28,15 @@ int main() {
 		v.push_back(inum);
 	}
 
+	//무게별로 몇개있는지 확인
 	for (int i = 0; i < n; i++)
+		weigharray[v[i]]++;
+
+
+	for (int i = 1; i < m; i++)
 	{
-		for (int j = i+1; j < n; j++)
-		{
-			if (v[i] != v[j])
-				result++;
-		}
+		n -= weigharray[i];
+		result += weigharray[i] * n;
 	}
 
 	cout << result;
